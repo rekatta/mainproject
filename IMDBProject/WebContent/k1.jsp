@@ -48,7 +48,7 @@
 <div class="w3-container w3-red">
   <footer class="container-fluid text-center">
   <p></p>  
-  <form action="../login.jsp" method="post" class="form-inline"  >
+  <form action="/CommentPath1" method="post" class="form-inline"  >
   <h2>Rating & comments</h2>
   
 <span  onmouseover="starmark(this)" onclick="starmark(this)" id="1one" style="font-size:40px;cursor:pointer;"  class="fa fa-star checked"></span>

@@ -3,8 +3,10 @@ package com.org.connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.org.pojo.RatingComment;
 import com.org.pojo.User;
 
 public class UserDao {
@@ -34,11 +36,8 @@ public class UserDao {
 		try {
 		 //String queryString = "SELECT * FROM users where user_emailid=? and user_password=?";
 			Connection con=ConnectionFactory.getConnection();
-					String query = "SELECT user_emailid, user_password FROM users";
-			
+			String query = "SELECT user_emailid, user_password FROM users";
 		     Statement s=con.createStatement();
-		      
-		     
 		      ResultSet results =s.executeQuery(query);
 		    
 			
@@ -65,7 +64,17 @@ public class UserDao {
 		
 	}
 	
-	
+	public int insert1(RatingComment ratingcomment) throws ClassNotFoundException, SQLException
+	{
+		String query="insert into ratingcomment(?,?)";
+		Connection con1=ConnectionFactory.getConnection();
+		PreparedStatement pst1=con1.prepareStatement(query);
+		pst1.setLong(1, ratingcomment.getRating());
+		pst1.setString(2, ratingcomment.getComments());
+		int comments=pst1.executeUpdate();
+		return comments;
+		
+	}
 	
 	
 	
@@ -76,6 +85,8 @@ public class UserDao {
 		return "deleted";
 		
 	}
+
+	
 	
 	/*
 	 * public static void main(String[] args) { UserDao u=new UserDao(); String
